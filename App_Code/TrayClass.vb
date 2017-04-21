@@ -24,4 +24,6 @@ Public Class SetInTray
 End Class
 Public Class Tickets
     Public bookNo As Integer
+    Public Amount As Decimal
+    Public Estimate As Decimal
 End Class
