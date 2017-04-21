@@ -20,4 +20,8 @@ Public Class SetInTray
     Public Estimate As Decimal
     Public isTray As Integer
     Public isSales As Integer
+    Public listOfTicket As New List(Of Tickets)
+End Class
+Public Class Tickets
+    Public bookNo As Integer
 End Class
