@@ -71,4 +71,28 @@ Public Class WSvReceiptDataAccessClass
         Return dt
     End Function
 
+    Public Shared Function getTicketInSet(ByVal vSetID As String) As DataTable
+        Dim dt As New DataTable
+        Dim da As New OracleDataAdapter
+        Dim con As New OracleConnection
+        Dim cmd As New OracleCommand
+        con = getPwAssetConnection()
+        cmd.Connection = con
+        cmd.CommandType = CommandType.StoredProcedure
+        cmd.CommandText = """WSV_getTicketInSet"""
+        cmd.Parameters.Add(New OracleParameter("vSetID", OracleDbType.Varchar2)).Value = vSetID
+        cmd.Parameters.Add(New OracleParameter("TicketInfo", OracleDbType.RefCursor)).Direction = ParameterDirection.Output
+
+        Try
+            da.SelectCommand = cmd
+            da.Fill(dt)
+        Catch ex As Exception
+
+        Finally
+            con.Close()
+        End Try
+
+        Return dt
+    End Function
+
 End Class

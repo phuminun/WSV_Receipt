@@ -48,6 +48,22 @@ Public Class WSVReceipt
                 setWithTray.isSales = Integer.Parse(dtSetInTray.Rows(i)("IsSale").ToString())
 
                 trayObj.listOfSet.Add(setWithTray)
+
+                Dim dtgetTicketInset As New DataTable
+                dtgetTicketInset = getTicketInSet(dtSetInTray.Rows(i)("SetID").ToString())
+
+
+                Dim ticketInset As New Tickets
+
+                If dtgetTicketInset.Rows.Count > 0 Then
+                    For j As Integer = 0 To dtgetTicketInset.Rows.Count - 1
+                        ticketInset.ticketId = dtgetTicketInset.Rows(j)("TicketId").ToString()
+                        ticketInset.transactionId = dtgetTicketInset.Rows(j)("TransactionId").ToString()
+
+                        trayObj.listOfTicket.Add(ticketInset)
+                    Next
+                End If
+
             Next
 
             trayObj.ResultStatus = "Success"

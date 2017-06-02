@@ -8,6 +8,7 @@ Public Class TrayClass
     Public BranchId As Integer
     Public BranchName As String
     Public listOfSet As New List(Of SetInTray)
+    Public listOfTicket As New List(Of Tickets)
     Public ResultStatus As String
 End Class
 
@@ -24,6 +25,10 @@ Public Class SetInTray
 End Class
 Public Class Tickets
     Public bookNo As Integer
+    Public ticketNo As Integer
+    Public ticketId As String
+    Public transactionId As String
     Public Amount As Decimal
     Public Estimate As Decimal
+    Public isSales As Integer
 End Class
